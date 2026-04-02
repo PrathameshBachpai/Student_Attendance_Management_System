@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Student Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>Student Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
 
-    <div class="container">
-        <h2>Student Dashboard</h2>
+<div class="navbar">
+    <h2>🎓 Student Dashboard</h2>
+</div>
 
-        <input id="roll" placeholder="Roll No">
-        <button onclick="getReport()">Overall</button>
-        <button onclick="getSubject()">Subject Wise</button>
+<div class="container">
 
-        <br><br>
+    <input id="roll" placeholder="Roll No">
+    <input type="date" id="date">
 
-        <input type="date" id="date">
-        <button onclick="getByDate()">Check By Date</button>
+    <button onclick="getReport()">Overall</button>
+    <button onclick="getSubject()">Subjects</button>
+    <button onclick="getByDate()">By Date</button>
 
+    <div class="grid">
         <div class="card">
-            <h3 id="overall"></h3>
+            <h3 id="overall">Overall Attendance</h3>
+            <canvas id="chart"></canvas>
         </div>
 
         <div class="card" id="subject"></div>
-
         <div class="card" id="datewise"></div>
-        <canvas id="chart" width="200" height="200"></canvas>
-        <script>
-            const params = new URLSearchParams(window.location.search);
-            document.getElementById("roll").value = params.get("roll");
-        </script>
-        <script src="script.js"></script>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+document.getElementById("roll").value = params.get("roll");
+</script>
 
 </body>
-
 </html>
